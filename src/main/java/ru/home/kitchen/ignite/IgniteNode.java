@@ -13,6 +13,7 @@ import java.math.BigInteger;
 
 /**
  * Created by boris on 01.11.16.
+ * Ignite node -> sever node
  */
 @Component
 public class IgniteNode {

@@ -10,6 +10,8 @@ import java.math.BigInteger;
 
 /**
  * Created by boris on 01.11.16.
+ * Key service.
+ * For cache key using area_key value.
  */
 @Component
 @Scope(value = "singleton")
