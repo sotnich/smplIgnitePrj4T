@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import ru.home.kitchen.ignite.IgniteNode;
+import ru.home.kitchen.service.KeyService;
 
 import java.math.BigInteger;
 
@@ -15,20 +15,15 @@ import java.math.BigInteger;
 @RestController
 public class SmplIgnitePrj4TApplication {
 
-	@Autowired
-	IgniteNode node;
+    @Autowired
+    KeyService keyService;
 
-	public static void main(String[] args) {
-		SpringApplication.run(SmplIgnitePrj4TApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SmplIgnitePrj4TApplication.class, args);
+    }
 
-	@RequestMapping(value = "/{area}/{key}", method = RequestMethod.GET)
-	BigInteger getOrPutAndGet(@PathVariable String area , @PathVariable String key) {
-
-		node.getIgnite().compute().broadcast(()->{
-			System.out.println("Hello");
-		});
-
-	return BigInteger.ONE;
-	}
+    @RequestMapping(value = "/{area}/{key}", method = RequestMethod.GET)
+    BigInteger getOrPutAndGet(@PathVariable String area, @PathVariable String key) {
+        return keyService.getOrPutVal(area,key);
+    }
 }
